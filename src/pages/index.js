@@ -12,7 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     marginBottom: theme.spacing(3),
-  }
+  },
+  links: {
+    color: 'inherit',
+    textDecoration: 'inherit',
+    '&:hover': {
+      textDecoration: "underline",
+    },
+  },
 }))
 
 const TEST_QUERY = gql`
@@ -41,6 +48,7 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
 `
 
 const RenderData = ({ data }) => {
+  const classes = useStyles()
   return (
     <>
       {console.log(data)}
@@ -48,7 +56,9 @@ const RenderData = ({ data }) => {
       {data.edges.map(({ node: { name, login, url } }) => {
         return (
           <div key={login}>
-            <p><a href={url}>{name}</a> <a href={url}>{login}</a></p>
+            <p>
+              <a className={classes.links} href={url}>{name}</a> <a className={classes.links} href={url}>{login}</a>
+            </p>
           </div>
         )
       })}
