@@ -22,7 +22,10 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
     edges {
       node {
         ... on User {
+          name
+          login
           email
+          url
         }
       }
     }
