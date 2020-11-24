@@ -19,6 +19,12 @@ const TEST_QUERY = gql`
 query UserSearch($first: Int, $query: String!, $type: SearchType!) {
   search(first: $first, query: $query, type: $type) {
     userCount
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     edges {
       node {
         ... on User {
@@ -31,6 +37,7 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
     }
   }
 }
+
 `
 
 const Home = () => {
