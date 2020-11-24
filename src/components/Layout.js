@@ -1,10 +1,14 @@
 import React from 'react'
+import {
+  Container,
+} from '@material-ui/core'
 
 const Layout = ({ children }) => {
   return (
     <>
-      <p>Layout component</p>
-      {children}
+      <Container>
+        {children}
+      </Container>
     </>
   )
 }
