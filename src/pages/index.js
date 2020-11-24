@@ -81,6 +81,16 @@ const Home = () => {
         <br />
         <Button variant="contained" color="secondary" onClick={handleClick}>Get Users</Button>
       </form>
+
+      {(() => {
+        if (userDataToRender?.search?.userCount && userDataToRender?.search?.userCount !== 0) return (
+          <>
+            <h2>Users: {userDataToRender.search.userCount}</h2>
+          </>
+        )
+      })()}
+      
+
       <pre>{JSON.stringify(userDataToRender, null, 2)}</pre>
     </>
   )
