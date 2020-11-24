@@ -5,7 +5,7 @@ import fetch from 'cross-fetch'
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: `Bearer ${'1072e178c25786b2aedfd3321293039c25bc637f'}`
+      authorization: `Bearer ${process.env.GITHUB_API_KEY}`
     }
   })
   return forward(operation)
