@@ -11,6 +11,9 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
+  },
+  spacer: {
+    height: 70,
   }
 }))
 
@@ -26,6 +29,7 @@ const TopBar = () => {
           <Typography variant="h6">GitHub User Search</Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.spacer}></div>
     </>
   )
 }
