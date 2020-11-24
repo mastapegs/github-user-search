@@ -47,9 +47,9 @@ const RenderData = ({ data }) => {
       <h2>Users: {data.userCount}</h2>
       {data.edges.map(({ node: { name, login, url } }) => {
         return (
-          <>
+          <div key={login}>
             <p><a href={url}>{name}</a> <a href={url}>{login}</a></p>
-          </>
+          </div>
         )
       })}
     </>
@@ -100,7 +100,7 @@ const Home = () => {
       {(() => {
         if (userDataToRender?.search) return <RenderData data={userDataToRender?.search} />
       })()}
-      
+
     </>
   )
 }
