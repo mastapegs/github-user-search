@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react"
 import { gql, useLazyQuery } from '@apollo/client'
 import {
   Button,
+  TextField,
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  form: {
+    marginBottom: theme.spacing(3),
+  }
+}))
 
 const TEST_QUERY = gql`
 query UserSearch($first: Int, $query: String!, $type: SearchType!) {
@@ -22,6 +30,9 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
 const Home = () => {
   const [getUsers, { data: userData }] = useLazyQuery(TEST_QUERY)
   const [userDataToRender, setUserDataToRender] = useState(null)
+  const [userInput, setUserInput] = useState('')
+
+  const classes = useStyles()
 
   useEffect(() => {
     console.log(userData)
@@ -30,11 +41,18 @@ const Home = () => {
 
   return (
     <>
-      <h1>GitHub User Search</h1>
+      <form className={classes.form}>
+        <TextField
+          id="user"
+          label="Search GitHub Users"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+        />
+      </form>
       <Button variant="contained" color="secondary" onClick={() => getUsers({
         variables: {
           first: 20,
-          query: "mastapegs",
+          query: userInput,
           type: "USER"
         }
       })}>Get Users</Button>
