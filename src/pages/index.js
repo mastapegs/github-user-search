@@ -100,8 +100,7 @@ const Home = () => {
       {(() => {
         if (userDataToRender?.search) return <RenderData data={userDataToRender?.search} />
       })()}
-
-      <pre>{JSON.stringify(userDataToRender, null, 2)}</pre>
+      
     </>
   )
 }
