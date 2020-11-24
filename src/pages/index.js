@@ -1,20 +1,44 @@
-import React from "react"
-import { gql, useQuery } from '@apollo/client'
+import React, { useEffect, useState } from "react"
+import { gql, useLazyQuery } from '@apollo/client'
+import {
+  Button,
+} from '@material-ui/core'
 
 const TEST_QUERY = gql`
-  query UserSearch($query: String!, $type: SearchType!) {
-    search(query: $query, type: $type) {
-      userCount
+query UserSearch($first: Int, $query: String!, $type: SearchType!) {
+  search(first: $first, query: $query, type: $type) {
+    userCount
+    edges {
+      node {
+        ... on User {
+          email
+        }
+      }
     }
   }
+}
 `
 
 const Home = () => {
-  const { data: userData } = useQuery(TEST_QUERY, { variables: { query: "mastapegs", type: "USER" } })
+  const [getUsers, { data: userData }] = useLazyQuery(TEST_QUERY)
+  const [userDataToRender, setUserDataToRender] = useState(null)
+
+  useEffect(() => {
+    console.log(userData)
+    setUserDataToRender({ ...userData })
+  }, [userData])
+
   return (
     <>
       <h1>GitHub User Search</h1>
-      <pre>{JSON.stringify(userData, null, 2)}</pre>
+      <Button variant="contained" color="secondary" onClick={() => getUsers({
+        variables: {
+          first: 20,
+          query: "mastapegs",
+          type: "USER"
+        }
+      })}>Get Users</Button>
+      <pre>{JSON.stringify(userDataToRender, null, 2)}</pre>
     </>
   )
 }
