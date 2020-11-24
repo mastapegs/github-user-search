@@ -40,17 +40,32 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
 
 `
 
+const RenderData = ({ data }) => {
+  return (
+    <>
+      {console.log(data)}
+      <h2>Users: {data.userCount}</h2>
+      {data.edges.map(({ node: { name, login, url } }) => {
+        return (
+          <>
+            <p><a href={url}>{name}</a> <a href={url}>{login}</a></p>
+          </>
+        )
+      })}
+    </>
+  )
+}
+
 const Home = () => {
-  const [getUsers, { data: userData }] = useLazyQuery(TEST_QUERY)
+  const [getUsers, { data: userDataFromQuery }] = useLazyQuery(TEST_QUERY)
   const [userDataToRender, setUserDataToRender] = useState(null)
   const [userInput, setUserInput] = useState('')
 
   const classes = useStyles()
 
   useEffect(() => {
-    console.log(userData)
-    setUserDataToRender({ ...userData })
-  }, [userData])
+    setUserDataToRender({ ...userDataFromQuery })
+  }, [userDataFromQuery])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -83,13 +98,8 @@ const Home = () => {
       </form>
 
       {(() => {
-        if (userDataToRender?.search?.userCount && userDataToRender?.search?.userCount !== 0) return (
-          <>
-            <h2>Users: {userDataToRender.search.userCount}</h2>
-          </>
-        )
+        if (userDataToRender?.search) return <RenderData data={userDataToRender?.search} />
       })()}
-      
 
       <pre>{JSON.stringify(userDataToRender, null, 2)}</pre>
     </>
