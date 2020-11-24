@@ -5,7 +5,7 @@ import fetch from 'cross-fetch'
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: `Bearer ${'865fdc881e1b8a3f655b959848c19fcc8cfad9c9'}`
+      authorization: `Bearer ${'2e7e1be6500c4cc4a24fc5ab4f67f64ec4a7a55c'}`
     }
   })
   return forward(operation)
