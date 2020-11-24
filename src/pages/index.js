@@ -14,6 +14,7 @@ const Home = () => {
   return (
     <>
       <h1>GitHub User Search</h1>
+      <p>Env Test: {process.env.GITHUB_API_KEY}</p>
       <pre>{JSON.stringify(userData, null, 2)}</pre>
     </>
   )
