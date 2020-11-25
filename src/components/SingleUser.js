@@ -40,7 +40,7 @@ const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
   const classes = useStyles()
   return (
     <>
-      <Grid item xs={12} sm={6} key={login}>
+      <Grid item xs={12} sm={6}>
         <Card style={{ height: '100%', }}>
           <CardContent>
             <Grid style={{

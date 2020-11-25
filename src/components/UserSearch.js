@@ -9,7 +9,7 @@ const UserSearch = ({ data }) => {
     <>
       <h2>Users Found: {parseFloat(data.userCount).toLocaleString('en')}</h2>
       <Grid container spacing={3}>
-        {data.edges.map(({ node: user }) => <SingleUser user={user} />)}
+        {data.edges.map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
     </>
   )
