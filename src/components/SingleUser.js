@@ -75,13 +75,13 @@ const SingleUser = ({ user: {
               <Avatar variant="rounded" className={classes.avatar} src={avatarUrl} />
               <div>
                 <div className={classes.name}>
-                  <a className={classes.links} href={url} target="_blank">
+                  <a className={classes.links} href={url} rel="noreferrer" target="_blank">
                     {name}
                   </a>
                 </div>
                 {' '}
                 <div className={classes.login}>
-                  <a className={classes.links} href={url} target="_blank">
+                  <a className={classes.links} href={url} rel="noreferrer" target="_blank">
                     {login}
                   </a>
                 </div>

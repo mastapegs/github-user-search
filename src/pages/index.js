@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { useLazyQuery } from '@apollo/client'
 import {
   TextField,
+  CircularProgress,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import UserSearch from '../components/UserSearch'
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Home = () => {
-  const [getUsers, { data: userDataFromQuery }] = useLazyQuery(USER_SEARCH)
+  const [getUsers, { data: userDataFromQuery, loading: userDataLoading }] = useLazyQuery(USER_SEARCH)
   const [userDataToRender, setUserDataToRender] = useState(null)
   const [userInput, setUserInput] = useState('')
   const inputRef = useRef(null)
@@ -60,7 +61,12 @@ const Home = () => {
         />
       </form>
 
-      {userDataToRender?.search && <UserSearch data={userDataToRender?.search} />}
+      {/* {userDataToRender?.search && <UserSearch data={userDataToRender?.search} />} */}
+
+      {(() => {
+        if (userDataLoading) return <CircularProgress />
+        else if (userDataToRender?.search) return <UserSearch data={userDataToRender?.search} />
+      })()}
 
     </>
   )
