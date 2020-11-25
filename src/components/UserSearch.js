@@ -21,7 +21,13 @@ const UserSearch = ({ data }) => {
         return (
           <div key={login}>
             <p>
-              <a className={classes.links} href={url}>{name}</a> <a className={classes.links} href={url}>{login}</a>
+              <a className={classes.links} href={url}>
+                {name}
+              </a>
+              {' '}
+              <a className={classes.links} href={url}>
+                {login}
+              </a>
             </p>
           </div>
         )

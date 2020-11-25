@@ -26,7 +26,7 @@ const TopBar = () => {
           <IconButton className={classes.icon} edge="start" color="inherit">
             <AccountCircleIcon />
           </IconButton>
-          <Typography variant="h6">GitHub User Search</Typography>
+          <Typography component='h1' variant="h6">GitHub User Search</Typography>
         </Toolbar>
       </AppBar>
       <div className={classes.spacer}></div>
