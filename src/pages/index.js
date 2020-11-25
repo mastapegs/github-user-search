@@ -54,9 +54,7 @@ const Home = () => {
         />
       </form>
 
-      {(() => {
-        if (userDataToRender?.search) return <UserSearch data={userDataToRender?.search} />
-      })()}
+      {userDataToRender?.search && <UserSearch data={userDataToRender?.search} /> }
 
     </>
   )
