@@ -18,6 +18,7 @@ export const USER_SEARCH = gql`
             email
             url
             avatarUrl
+            bioHTML
           }
         }
       }
