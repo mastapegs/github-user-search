@@ -3,11 +3,19 @@ import {
   Grid,
   IconButton,
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import SingleUser from './SingleUser'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 
+const useStyles = makeStyles({
+  navButtons: {
+    fontSize: '3em',
+  },
+})
+
 const UserSearch = ({ data }) => {
+  const classes = useStyles()
   return (
     <>
       <h2>Users Found: {parseFloat(data.userCount).toLocaleString('en')}</h2>
@@ -18,10 +26,10 @@ const UserSearch = ({ data }) => {
       </Grid>
       <Grid container justify='center' spacing={5}>
         <IconButton color='primary'>
-          <NavigateBeforeIcon />
+          <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
         <IconButton color='primary'>
-          <NavigateNextIcon />
+          <NavigateNextIcon className={classes.navButtons} />
         </IconButton>
       </Grid>
     </>
