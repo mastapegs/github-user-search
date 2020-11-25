@@ -6,6 +6,8 @@ import {
   Grid,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
+import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 
 const useStyles = makeStyles(theme => ({
   links: {
@@ -73,11 +75,11 @@ const SingleUser = ({ user: {
               <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
             </Grid>
             <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <p>Repositories: {repoCount}</p>
+              <Grid container alignItems="center" item xs={12}>
+                <AccountTreeOutlinedIcon /><p>Repositories: {repoCount}</p>
               </Grid>
-              <Grid item xs={12}>
-                <p>Stars: {starCount}</p>
+              <Grid container alignItems="center" item xs={12}>
+                <StarBorderRoundedIcon /><p>Stars: {starCount}</p>
               </Grid>
             </Grid>
           </CardContent>

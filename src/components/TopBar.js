@@ -5,7 +5,7 @@ import {
   IconButton,
   Typography,
 } from '@material-ui/core'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import GitHubIcon from '@material-ui/icons/GitHub'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +24,7 @@ const TopBar = () => {
       <AppBar position="fixed">
         <Toolbar>
           <IconButton className={classes.icon} edge="start" color="inherit">
-            <AccountCircleIcon />
+            <GitHubIcon />
           </IconButton>
           <Typography component='h1' variant="h6">GitHub User Search</Typography>
         </Toolbar>
