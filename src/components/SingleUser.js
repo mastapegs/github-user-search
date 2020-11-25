@@ -13,6 +13,10 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 const useStyles = makeStyles(theme => {
   const avatarShadow = 4
   return ({
+    userCard: {
+      backgroundColor: '#3f51b5',
+      color: 'white',
+    },
     links: {
       color: 'inherit',
       textDecoration: 'inherit',
@@ -24,7 +28,7 @@ const useStyles = makeStyles(theme => {
       fontSize: '1.3em',
       marginRight: theme.spacing(3),
       fontWeight: 'bold',
-      color: 'hsla(240, 100%, 70%, 1)',
+      color: 'hsla(30, 100%, 85%, 1)',
       textShadow: '1px 1px 1px black',
       letterSpacing: '2px',
     },
@@ -35,10 +39,14 @@ const useStyles = makeStyles(theme => {
       marginRight: theme.spacing(2),
     },
     bioHTML: {
-      fontSize: '1.6em'
+      fontSize: '1.6em',
+      '& a': {
+        color: 'hsl(180, 100%, 50%)',
+        textDecoration: 'inherit',
+      },
     },
     login: {
-      color: 'hsla(0, 0%, 50%, 1)',
+      color: 'hsla(0, 0%, 70%, 1)',
     },
     icon: {
       display: 'inline-block',
@@ -67,7 +75,7 @@ const SingleUser = ({ user: {
   return (
     <>
       <Grid item xs={12} sm={6}>
-        <Card style={{ height: '100%', }}>
+        <Card className={classes.userCard} style={{ height: '100%', }}>
           <CardContent>
             <Grid style={{
               alignItems: 'center',
