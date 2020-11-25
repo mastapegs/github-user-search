@@ -41,6 +41,12 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-block',
     marginRight: theme.spacing(1),
   },
+  additionalData: {
+    '& p': {
+      marginTop: 0,
+      marginBottom: 0,
+    },
+  },
 }))
 
 const SingleUser = ({ user: {
@@ -80,7 +86,7 @@ const SingleUser = ({ user: {
             <Grid>
               <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
             </Grid>
-            <Grid container spacing={1}>
+            <Grid className={classes.additionalData} container spacing={1}>
               <Grid container alignItems="center" item xs={12}>
                 <AccountTreeOutlinedIcon className={classes.icon} />
                 <p># of Repositories: {parseFloat(repoCount).toLocaleString('en')}</p>
