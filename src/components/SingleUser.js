@@ -14,8 +14,7 @@ const useStyles = makeStyles(theme => {
   const avatarShadow = 4
   return ({
     userCard: {
-      backgroundColor: '#3f51b5',
-      color: 'white',
+      backgroundColor: 'hsl(240, 20%, 95%)',
     },
     links: {
       color: 'inherit',
@@ -46,7 +45,7 @@ const useStyles = makeStyles(theme => {
       },
     },
     login: {
-      color: 'hsla(0, 0%, 70%, 1)',
+      color: 'hsla(0, 0%, 50%, 1)',
     },
     icon: {
       display: 'inline-block',
