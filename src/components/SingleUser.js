@@ -16,8 +16,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   name: {
-    fontSize: '1.5em',
+    fontSize: '1.7em',
     marginRight: theme.spacing(3),
+    fontWeight: 'bold',
+    color: 'hsla(240, 100%, 40%, 1)',
   },
   avatar: {
     height: 80,
@@ -25,7 +27,10 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(3),
   },
   bioHTML: {
-    fontSize: '1.3em'
+    fontSize: '1.5em'
+  },
+  login: {
+    color: 'hsla(0, 0%, 50%, 1)',
   }
 }))
 
@@ -40,17 +45,19 @@ const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
               alignItems: 'center',
             }} container spacing={1}>
               <Avatar className={classes.avatar} src={avatarUrl} />
-              <span className={classes.name}>
-                <a className={classes.links} href={url}>
-                  {name}
-                </a>
-              </span>
-              {' '}
-              <span>
-                <a className={classes.links} href={url}>
-                  {login}
-                </a>
-              </span>
+              <div>
+                <div className={classes.name}>
+                  <a className={classes.links} href={url}>
+                    {name}
+                  </a>
+                </div>
+                {' '}
+                <div className={classes.login}>
+                  <a className={classes.links} href={url}>
+                    {login}
+                  </a>
+                </div>
+              </div>
             </Grid>
             <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
           </CardContent>
