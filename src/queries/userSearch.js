@@ -17,6 +17,7 @@ export const USER_SEARCH = gql`
             login
             email
             url
+            avatarUrl
           }
         }
       }

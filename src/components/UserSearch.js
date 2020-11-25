@@ -1,5 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import {
+  Avatar,
+} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   links: {
@@ -15,20 +18,18 @@ const UserSearch = ({ data }) => {
   const classes = useStyles()
   return (
     <>
-      {console.log(data)}
       <h2>Users: {data.userCount}</h2>
-      {data.edges.map(({ node: { name, login, url } }) => {
+      {data.edges.map(({ node: { name, login, url, avatarUrl } }) => {
         return (
           <div key={login}>
-            <p>
-              <a className={classes.links} href={url}>
-                {name}
-              </a>
-              {' '}
-              <a className={classes.links} href={url}>
-                {login}
-              </a>
-            </p>
+            <Avatar src={avatarUrl} />
+            <a className={classes.links} href={url}>
+              {name}
+            </a>
+            {' '}
+            <a className={classes.links} href={url}>
+              {login}
+            </a>
           </div>
         )
       })}
