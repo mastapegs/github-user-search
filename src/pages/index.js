@@ -5,6 +5,7 @@ import {
   TextField,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import UserSearch from '../components/UserSearch'
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -12,13 +13,6 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     marginBottom: theme.spacing(3),
-  },
-  links: {
-    color: 'inherit',
-    textDecoration: 'inherit',
-    '&:hover': {
-      textDecoration: "underline",
-    },
   },
 }))
 
@@ -47,25 +41,6 @@ query UserSearch($first: Int, $query: String!, $type: SearchType!) {
 
 `
 
-const RenderData = ({ data }) => {
-  const classes = useStyles()
-  return (
-    <>
-      {console.log(data)}
-      <h2>Users: {data.userCount}</h2>
-      {data.edges.map(({ node: { name, login, url } }) => {
-        return (
-          <div key={login}>
-            <p>
-              <a className={classes.links} href={url}>{name}</a> <a className={classes.links} href={url}>{login}</a>
-            </p>
-          </div>
-        )
-      })}
-    </>
-  )
-}
-
 const Home = () => {
   const [getUsers, { data: userDataFromQuery }] = useLazyQuery(TEST_QUERY)
   const [userDataToRender, setUserDataToRender] = useState(null)
@@ -79,10 +54,10 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleClick()
+    handleSearch()
   }
 
-  const handleClick = () => {
+  const handleSearch = () => {
     getUsers({
       variables: {
         first: 20,
@@ -90,12 +65,11 @@ const Home = () => {
         type: "USER"
       }
     })
-    setUserInput('')
   }
 
   return (
     <>
-      <form className={classes.form} onSubmit={handleSubmit}>
+      <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
         <TextField
           id="user"
           label="Search GitHub Users"
@@ -103,12 +77,10 @@ const Home = () => {
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />
-        <br />
-        <Button variant="contained" color="secondary" onClick={handleClick}>Get Users</Button>
       </form>
 
       {(() => {
-        if (userDataToRender?.search) return <RenderData data={userDataToRender?.search} />
+        if (userDataToRender?.search) return <UserSearch data={userDataToRender?.search} />
       })()}
 
     </>
