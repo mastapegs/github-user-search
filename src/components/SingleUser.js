@@ -35,7 +35,11 @@ const useStyles = makeStyles(theme => ({
   },
   login: {
     color: 'hsla(0, 0%, 50%, 1)',
-  }
+  },
+  icon: {
+    display: 'inline-block',
+    marginRight: theme.spacing(1),
+  },
 }))
 
 const SingleUser = ({ user: {
@@ -76,10 +80,10 @@ const SingleUser = ({ user: {
             </Grid>
             <Grid container spacing={1}>
               <Grid container alignItems="center" item xs={12}>
-                <AccountTreeOutlinedIcon /><p>Repositories: {repoCount}</p>
+                <AccountTreeOutlinedIcon className={classes.icon} /><p>Repositories: {repoCount}</p>
               </Grid>
               <Grid container alignItems="center" item xs={12}>
-                <StarBorderRoundedIcon /><p>Stars: {starCount}</p>
+                <StarBorderRoundedIcon className={classes.icon} /><p>Stars: {starCount}</p>
               </Grid>
             </Grid>
           </CardContent>
