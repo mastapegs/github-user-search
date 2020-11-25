@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => {
       fontSize: '1.3em',
       marginRight: theme.spacing(3),
       fontWeight: 'bold',
-      color: 'hsla(30, 100%, 85%, 1)',
+      color: 'hsla(30, 100%, 70%, 1)',
       textShadow: '1px 1px 1px black',
       letterSpacing: '2px',
     },
@@ -39,10 +39,6 @@ const useStyles = makeStyles(theme => {
     },
     bioHTML: {
       fontSize: '1.6em',
-      '& a': {
-        color: 'hsl(180, 100%, 50%)',
-        textDecoration: 'inherit',
-      },
     },
     login: {
       color: 'hsla(0, 0%, 50%, 1)',
