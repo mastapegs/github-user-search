@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 const Home = () => {
   const [getUsers, { data: userDataFromQuery, loading: userDataLoading }] = useLazyQuery(USER_SEARCH)
-  const [userDataToRender, setUserDataToRender] = useState(null)
   const [userInput, setUserInput] = useState('')
   const inputRef = useRef(null)
 
@@ -28,10 +27,6 @@ const Home = () => {
   useEffect(() => {
     inputRef.current.querySelector("input").focus()
   }, [inputRef])
-
-  useEffect(() => {
-    setUserDataToRender({ ...userDataFromQuery })
-  }, [userDataFromQuery])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -61,11 +56,9 @@ const Home = () => {
         />
       </form>
 
-      {/* {userDataToRender?.search && <UserSearch data={userDataToRender?.search} />} */}
-
       {(() => {
         if (userDataLoading) return <CircularProgress />
-        else if (userDataToRender?.search) return <UserSearch data={userDataToRender?.search} />
+        else if (userDataFromQuery?.search) return <UserSearch data={userDataFromQuery?.search} />
       })()}
 
     </>
