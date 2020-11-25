@@ -15,6 +15,18 @@ const useStyles = makeStyles(theme => ({
       textDecoration: "underline",
     },
   },
+  name: {
+    fontSize: '1.7em',
+    marginRight: theme.spacing(3),
+  },
+  avatar: {
+    height: 80,
+    width: 80,
+    marginRight: theme.spacing(3),
+  },
+  bioHTML: {
+    fontSize: '1.4em'
+  }
 }))
 
 const UserSearch = ({ data }) => {
@@ -26,17 +38,25 @@ const UserSearch = ({ data }) => {
         {data.edges.map(({ node: { name, login, url, avatarUrl, bioHTML } }) => {
           return (
             <Grid item xs={12} key={login}>
-              <Card>
+              <Card style={{ height: '100%', }}>
                 <CardContent>
-                  <Avatar src={avatarUrl} />
-                  <a className={classes.links} href={url}>
-                    {name}
-                  </a>
-                  {' '}
-                  <a className={classes.links} href={url}>
-                    {login}
-                  </a>
-                  <p dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
+                  <Grid style={{
+                    alignItems: 'center',
+                  }} container spacing={1}>
+                    <Avatar className={classes.avatar} src={avatarUrl} />
+                    <span className={classes.name}>
+                      <a className={classes.links} href={url}>
+                        {name}
+                      </a>
+                    </span>
+                    {' '}
+                    <span>
+                      <a className={classes.links} href={url}>
+                        {login}
+                      </a>
+                    </span>
+                  </Grid>
+                  <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
                 </CardContent>
               </Card>
             </Grid>
