@@ -10,6 +10,12 @@ import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 
+const trimString = string => {
+  const trimLength = 20
+  if (string.length <= trimLength) return string
+  return `${string.slice(0, trimLength)}...`
+}
+
 const useStyles = makeStyles(theme => {
   const avatarShadow = 4
   return ({
@@ -79,7 +85,7 @@ const SingleUser = ({ user: {
               <div>
                 <div className={classes.name}>
                   <a className={classes.links} href={url} rel="noreferrer" target="_blank">
-                    {name}
+                    {trimString(name)}
                   </a>
                 </div>
                 {' '}
