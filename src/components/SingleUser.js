@@ -16,10 +16,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
   name: {
-    fontSize: '1.7em',
+    fontSize: '1.5em',
     marginRight: theme.spacing(3),
     fontWeight: 'bold',
-    color: 'hsla(240, 100%, 40%, 1)',
+    color: 'hsla(200, 100%, 40%, 1)',
+    textShadow: '1px 1px 1px black',
+    letterSpacing: '2px',
   },
   avatar: {
     height: 80,
@@ -27,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(3),
   },
   bioHTML: {
-    fontSize: '1.5em'
+    fontSize: '1.3em'
   },
   login: {
     color: 'hsla(0, 0%, 50%, 1)',
