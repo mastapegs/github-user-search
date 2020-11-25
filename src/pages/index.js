@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { gql, useLazyQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import {
-  Button,
   TextField,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import UserSearch from '../components/UserSearch'
+import { USER_SEARCH } from '../queries'
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -16,33 +16,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const TEST_QUERY = gql`
-query UserSearch($first: Int, $query: String!, $type: SearchType!) {
-  search(first: $first, query: $query, type: $type) {
-    userCount
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    edges {
-      node {
-        ... on User {
-          name
-          login
-          email
-          url
-        }
-      }
-    }
-  }
-}
-
-`
-
 const Home = () => {
-  const [getUsers, { data: userDataFromQuery }] = useLazyQuery(TEST_QUERY)
+  const [getUsers, { data: userDataFromQuery }] = useLazyQuery(USER_SEARCH)
   const [userDataToRender, setUserDataToRender] = useState(null)
   const [userInput, setUserInput] = useState('')
 
