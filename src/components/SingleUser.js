@@ -10,44 +10,48 @@ import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 
-const useStyles = makeStyles(theme => ({
-  links: {
-    color: 'inherit',
-    textDecoration: 'inherit',
-    '&:hover': {
-      textDecoration: "underline",
+const useStyles = makeStyles(theme => {
+  const avatarShadow = 4
+  return ({
+    links: {
+      color: 'inherit',
+      textDecoration: 'inherit',
+      '&:hover': {
+        textDecoration: "underline",
+      },
     },
-  },
-  name: {
-    fontSize: '1.7em',
-    marginRight: theme.spacing(3),
-    fontWeight: 'bold',
-    color: 'hsla(240, 100%, 70%, 1)',
-    textShadow: '1px 1px 1px black',
-    letterSpacing: '2px',
-  },
-  avatar: {
-    height: 80,
-    width: 80,
-    marginRight: theme.spacing(3),
-  },
-  bioHTML: {
-    fontSize: '1.4em'
-  },
-  login: {
-    color: 'hsla(0, 0%, 50%, 1)',
-  },
-  icon: {
-    display: 'inline-block',
-    marginRight: theme.spacing(1),
-  },
-  additionalData: {
-    '& p': {
-      marginTop: 0,
-      marginBottom: 0,
+    name: {
+      fontSize: '1.7em',
+      marginRight: theme.spacing(3),
+      fontWeight: 'bold',
+      color: 'hsla(240, 100%, 70%, 1)',
+      textShadow: '1px 1px 1px black',
+      letterSpacing: '2px',
     },
-  },
-}))
+    avatar: {
+      height: 50,
+      width: 50,
+      boxShadow: `${avatarShadow}px ${avatarShadow}px ${avatarShadow}px hsla(0, 0%, 0%, 0.5)`,
+      marginRight: theme.spacing(3),
+    },
+    bioHTML: {
+      fontSize: '1.4em'
+    },
+    login: {
+      color: 'hsla(0, 0%, 50%, 1)',
+    },
+    icon: {
+      display: 'inline-block',
+      marginRight: theme.spacing(1),
+    },
+    additionalData: {
+      '& p': {
+        marginTop: 0,
+        marginBottom: 0,
+      },
+    },
+  })
+})
 
 const SingleUser = ({ user: {
   name,
@@ -68,7 +72,7 @@ const SingleUser = ({ user: {
             <Grid style={{
               alignItems: 'center',
             }} container spacing={1}>
-              <Avatar className={classes.avatar} src={avatarUrl} />
+              <Avatar variant="rounded" className={classes.avatar} src={avatarUrl} />
               <div>
                 <div className={classes.name}>
                   <a className={classes.links} href={url} target="_blank">
