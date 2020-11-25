@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   name: {
-    fontSize: '1.7em',
+    fontSize: '1.5em',
     marginRight: theme.spacing(3),
   },
   avatar: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(3),
   },
   bioHTML: {
-    fontSize: '1.4em'
+    fontSize: '1.3em'
   }
 }))
 
@@ -33,7 +33,7 @@ const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
   const classes = useStyles()
   return (
     <>
-      <Grid item xs={12} key={login}>
+      <Grid item xs={12} sm={6} key={login}>
         <Card style={{ height: '100%', }}>
           <CardContent>
             <Grid style={{
