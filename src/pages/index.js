@@ -36,7 +36,7 @@ const Home = () => {
   const handleSearch = () => {
     getUsers({
       variables: {
-        first: 20,
+        first: 10,
         query: userInput,
         type: "USER"
       }
