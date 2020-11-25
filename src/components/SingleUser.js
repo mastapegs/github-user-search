@@ -49,13 +49,13 @@ const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
               <Avatar className={classes.avatar} src={avatarUrl} />
               <div>
                 <div className={classes.name}>
-                  <a className={classes.links} href={url}>
+                  <a className={classes.links} href={url} target="_blank">
                     {name}
                   </a>
                 </div>
                 {' '}
                 <div className={classes.login}>
-                  <a className={classes.links} href={url}>
+                  <a className={classes.links} href={url} target="_blank">
                     {login}
                   </a>
                 </div>
