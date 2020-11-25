@@ -19,6 +19,15 @@ export const USER_SEARCH = gql`
             url
             avatarUrl
             bioHTML
+            followers {
+              totalCount
+            }
+            repositories {
+              totalCount
+            }
+            starredRepositories {
+              totalCount
+            }
           }
         }
       }
