@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => {
       height: 50,
       width: 50,
       boxShadow: `${avatarShadow}px ${avatarShadow}px ${avatarShadow}px hsla(0, 0%, 0%, 0.5)`,
-      marginRight: theme.spacing(3),
+      marginRight: theme.spacing(2),
     },
     bioHTML: {
       fontSize: '1.6em'
