@@ -11,6 +11,7 @@ import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 
 const trimString = string => {
+  if (!string) return string
   const trimLength = 20
   if (string.length <= trimLength) return string
   return `${string.slice(0, trimLength)}...`
