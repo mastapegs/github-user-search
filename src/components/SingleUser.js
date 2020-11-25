@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => {
       },
     },
     name: {
-      fontSize: '1.7em',
+      fontSize: '1.3em',
       marginRight: theme.spacing(3),
       fontWeight: 'bold',
       color: 'hsla(240, 100%, 70%, 1)',
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => {
       marginRight: theme.spacing(3),
     },
     bioHTML: {
-      fontSize: '1.4em'
+      fontSize: '1.6em'
     },
     login: {
       color: 'hsla(0, 0%, 50%, 1)',
