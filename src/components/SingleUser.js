@@ -8,6 +8,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
+import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 
 const useStyles = makeStyles(theme => ({
   links: {
@@ -50,6 +51,7 @@ const SingleUser = ({ user: {
   bioHTML,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
+  followers: { totalCount: followerCount },
 } }) => {
   const classes = useStyles()
   return (
@@ -80,10 +82,16 @@ const SingleUser = ({ user: {
             </Grid>
             <Grid container spacing={1}>
               <Grid container alignItems="center" item xs={12}>
-                <AccountTreeOutlinedIcon className={classes.icon} /><p>Repositories: {repoCount}</p>
+                <AccountTreeOutlinedIcon className={classes.icon} />
+                <p># of Repositories: {parseFloat(repoCount).toLocaleString('en')}</p>
               </Grid>
               <Grid container alignItems="center" item xs={12}>
-                <StarBorderRoundedIcon className={classes.icon} /><p>Stars: {starCount}</p>
+                <StarBorderRoundedIcon className={classes.icon} />
+                <p>Repositories Starred: {parseFloat(starCount).toLocaleString('en')}</p>
+              </Grid>
+              <Grid container alignItems="center" item xs={12}>
+                <PeopleAltOutlinedIcon className={classes.icon} />
+                <p>Followers: {parseFloat(followerCount).toLocaleString('en')}</p>
               </Grid>
             </Grid>
           </CardContent>

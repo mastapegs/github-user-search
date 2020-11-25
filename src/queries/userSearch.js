@@ -28,6 +28,9 @@ export const USER_SEARCH = gql`
             starredRepositories {
               totalCount
             }
+            followers {
+              totalCount
+            }
           }
         }
       }
