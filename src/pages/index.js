@@ -25,7 +25,6 @@ const Home = () => {
   const classes = useStyles()
 
   useEffect(() => {
-    console.log(inputRef.current)
     inputRef.current.querySelector("input").focus()
   }, [inputRef])
 
