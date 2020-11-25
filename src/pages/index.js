@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { useLazyQuery } from '@apollo/client'
 import {
   TextField,
@@ -20,8 +20,14 @@ const Home = () => {
   const [getUsers, { data: userDataFromQuery }] = useLazyQuery(USER_SEARCH)
   const [userDataToRender, setUserDataToRender] = useState(null)
   const [userInput, setUserInput] = useState('')
+  const inputRef = useRef(null)
 
   const classes = useStyles()
+
+  useEffect(() => {
+    console.log(inputRef.current)
+    inputRef.current.querySelector("input").focus()
+  }, [inputRef])
 
   useEffect(() => {
     setUserDataToRender({ ...userDataFromQuery })
@@ -51,10 +57,11 @@ const Home = () => {
           className={classes.textField}
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
+          ref={inputRef}
         />
       </form>
 
-      {userDataToRender?.search && <UserSearch data={userDataToRender?.search} /> }
+      {userDataToRender?.search && <UserSearch data={userDataToRender?.search} />}
 
     </>
   )
