@@ -36,7 +36,15 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
+const SingleUser = ({ user: {
+  name,
+  login,
+  url,
+  avatarUrl,
+  bioHTML,
+  repositories: { totalCount: repoCount },
+  starredRepositories: { totalCount: starCount },
+} }) => {
   const classes = useStyles()
   return (
     <>
@@ -61,7 +69,17 @@ const SingleUser = ({ user: { name, login, url, avatarUrl, bioHTML } }) => {
                 </div>
               </div>
             </Grid>
-            <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
+            <Grid>
+              <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
+            </Grid>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <p>Repositories: {repoCount}</p>
+              </Grid>
+              <Grid item xs={12}>
+                <p>Stars: {starCount}</p>
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
       </Grid>
