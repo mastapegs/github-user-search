@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Grid,
   IconButton,
@@ -16,6 +16,8 @@ const useStyles = makeStyles({
 
 const UserSearch = ({ data }) => {
   const classes = useStyles()
+  const [backButtonDisabled, setBackButtonDisabled] = useState(true)
+  const [forwardButtonDisabled, setForwardButtonDisabled] = useState(true)
   return (
     <>
       <h2>Users Found: {parseFloat(data.userCount).toLocaleString('en')}</h2>
@@ -25,10 +27,10 @@ const UserSearch = ({ data }) => {
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
       <Grid container justify='center' spacing={5}>
-        <IconButton color='primary'>
+        <IconButton disabled={backButtonDisabled} color='primary'>
           <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
-        <IconButton color='primary'>
+        <IconButton disabled={forwardButtonDisabled} color='primary'>
           <NavigateNextIcon className={classes.navButtons} />
         </IconButton>
       </Grid>
