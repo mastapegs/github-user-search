@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const UserInput = ({ getUsers }) => {
+const UserInput = ({ getUsers, setSavedUserInput }) => {
 
   const [userInput, setUserInput] = useState('')
   const classes = useStyles()
@@ -29,6 +29,7 @@ const UserInput = ({ getUsers }) => {
   }
 
   const handleSearch = () => {
+    setSavedUserInput(userInput)
     getUsers({
       variables: {
         first: 10,

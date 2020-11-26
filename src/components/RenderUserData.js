@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 })
 
-const RenderUserData = ({ UserSearchData, fetchMore }) => {
+const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
@@ -41,6 +41,10 @@ const RenderUserData = ({ UserSearchData, fetchMore }) => {
     search: {
       userCount,
       edges,
+      pageInfo: {
+        startCursor,
+        endCursor,
+      },
     }
   } = UserSearchData
 
@@ -53,10 +57,24 @@ const RenderUserData = ({ UserSearchData, fetchMore }) => {
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
       <Grid container justify='center' spacing={5}>
-        <IconButton disabled={backButtonDisabled} color='primary'>
+        <IconButton onClick={() => fetchMore({
+          variables: {
+            last: 10,
+            before: startCursor,
+            query: savedUserInput,
+            type: 'USER',
+          }
+        })} disabled={backButtonDisabled} color='primary'>
           <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
-        <IconButton disabled={forwardButtonDisabled} color='primary'>
+        <IconButton onClick={() => fetchMore({
+          variables: {
+            first: 10,
+            after: endCursor,
+            query: savedUserInput,
+            type: 'USER',
+          }
+        })} disabled={forwardButtonDisabled} color='primary'>
           <NavigateNextIcon className={classes.navButtons} />
         </IconButton>
       </Grid>
