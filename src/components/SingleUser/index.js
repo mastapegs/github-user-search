@@ -22,7 +22,27 @@ const SingleUser = ({ user: {
   starredRepositories: { totalCount: starCount },
   followers: { totalCount: followerCount },
 } }) => {
+
   const classes = useStyles()
+
+  const additionalData = [
+    {
+      Icon: AccountTreeOutlinedIcon,
+      text: '# of Repositories: ',
+      data: repoCount,
+    },
+    {
+      Icon: StarBorderRoundedIcon,
+      text: 'Repositories Starred: ',
+      data: starCount,
+    },
+    {
+      Icon: PeopleAltOutlinedIcon,
+      text: 'Followers: ',
+      data: followerCount,
+    },
+  ]
+
   return (
     <>
       <Grid item xs={12} sm={6}>
@@ -50,18 +70,12 @@ const SingleUser = ({ user: {
               <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
             </Grid>
             <Grid className={classes.additionalData} container spacing={1}>
-              <Grid container alignItems="center" item xs={12}>
-                <AccountTreeOutlinedIcon className={classes.icon} />
-                <p># of Repositories: {formatNumber(repoCount)}</p>
-              </Grid>
-              <Grid container alignItems="center" item xs={12}>
-                <StarBorderRoundedIcon className={classes.icon} />
-                <p>Repositories Starred: {formatNumber(starCount)}</p>
-              </Grid>
-              <Grid container alignItems="center" item xs={12}>
-                <PeopleAltOutlinedIcon className={classes.icon} />
-                <p>Followers: {formatNumber(followerCount)}</p>
-              </Grid>
+              {additionalData.map(({ Icon, text, data }) => (
+                <Grid container alignItems="center" item xs={12} key={text}>
+                  <Icon className={classes.icon} />
+                  <p>{text}{formatNumber(data)}</p>
+                </Grid>
+              ))}
             </Grid>
           </CardContent>
         </Card>
