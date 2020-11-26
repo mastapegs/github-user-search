@@ -9,13 +9,7 @@ import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 import useStyles from './useStyles'
-
-const trimString = string => {
-  if (!string) return string
-  const trimLength = 20
-  if (string.length <= trimLength) return string
-  return `${string.slice(0, trimLength)}...`
-}
+import trimString from '../../utils/trimString'
 
 const SingleUser = ({ user: {
   name,
