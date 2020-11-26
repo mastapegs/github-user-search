@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Grid,
   IconButton,
@@ -19,6 +19,21 @@ const RenderUserData = ({ UserSearchData }) => {
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
   const [forwardButtonDisabled, setForwardButtonDisabled] = useState(true)
+
+  useEffect(() => {
+    if (UserSearchData) {
+      const {
+        search: {
+          pageInfo: {
+            hasPreviousPage,
+            hasNextPage,
+          },
+        }
+      } = UserSearchData
+      setBackButtonDisabled(!hasPreviousPage)
+      setForwardButtonDisabled(!hasNextPage)
+    }
+  }, [UserSearchData])
 
   if (!UserSearchData) return <></>
 
