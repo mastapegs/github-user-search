@@ -8,7 +8,7 @@ const UserSearch = ({ userDataIsLoading, userDataFromQuery, }) => {
   return (
     <>
       {userDataIsLoading && <CircularProgress />}
-      <RenderUserData data={userDataFromQuery} />
+      <RenderUserData UserSearchData={userDataFromQuery} />
     </>
   )
 }

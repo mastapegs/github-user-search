@@ -14,20 +14,20 @@ const useStyles = makeStyles({
   },
 })
 
-const RenderUserData = ({ data }) => {
+const RenderUserData = ({ UserSearchData }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
   const [forwardButtonDisabled, setForwardButtonDisabled] = useState(true)
 
-  if (!data) return <></>
+  if (!UserSearchData) return <></>
 
   const {
     search: {
       userCount,
       edges,
     }
-  } = data
+  } = UserSearchData
 
   return (
     <>
