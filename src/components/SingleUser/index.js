@@ -10,6 +10,7 @@ import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 import useStyles from './useStyles'
 import trimString from '../../utils/trimString'
+import formatNumber from '../../utils/formatNumber'
 
 const SingleUser = ({ user: {
   name,
@@ -51,15 +52,15 @@ const SingleUser = ({ user: {
             <Grid className={classes.additionalData} container spacing={1}>
               <Grid container alignItems="center" item xs={12}>
                 <AccountTreeOutlinedIcon className={classes.icon} />
-                <p># of Repositories: {parseFloat(repoCount).toLocaleString('en')}</p>
+                <p># of Repositories: {formatNumber(repoCount)}</p>
               </Grid>
               <Grid container alignItems="center" item xs={12}>
                 <StarBorderRoundedIcon className={classes.icon} />
-                <p>Repositories Starred: {parseFloat(starCount).toLocaleString('en')}</p>
+                <p>Repositories Starred: {formatNumber(starCount)}</p>
               </Grid>
               <Grid container alignItems="center" item xs={12}>
                 <PeopleAltOutlinedIcon className={classes.icon} />
-                <p>Followers: {parseFloat(followerCount).toLocaleString('en')}</p>
+                <p>Followers: {formatNumber(followerCount)}</p>
               </Grid>
             </Grid>
           </CardContent>
