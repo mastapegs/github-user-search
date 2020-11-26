@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 })
 
-const RenderUserData = ({ UserSearchData }) => {
+const RenderUserData = ({ UserSearchData, fetchMore }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
