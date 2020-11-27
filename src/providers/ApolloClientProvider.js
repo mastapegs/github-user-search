@@ -1,6 +1,7 @@
 import React from 'react'
 import { ApolloProvider, ApolloClient, ApolloLink, InMemoryCache, HttpLink, concat } from '@apollo/client'
 import fetch from 'cross-fetch'
+import mergeSearchQuery from '../utils/mergeSearchQuery'
 
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext({
@@ -24,20 +25,7 @@ const client = new ApolloClient({
         fields: {
           search: {
             keyArgs: ['query'],
-            merge(existingUsers = {}, incomingUsers, { args: { first, last, after, before } }) {
-              console.log('existingUsers')
-              console.log(existingUsers)
-              console.log('incomingUsers')
-              console.log(incomingUsers)
-              console.log('first')
-              console.log(first)
-              console.log('after')
-              console.log(after)
-
-              
-
-              return incomingUsers
-            },
+            merge: mergeSearchQuery,
           }
         }
       },
