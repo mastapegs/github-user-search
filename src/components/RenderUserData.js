@@ -58,8 +58,6 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
       </Grid>
       <Grid container justify='center' spacing={5}>
         <IconButton onClick={() => {
-          console.log(startCursor)
-          console.log(savedUserInput)
           fetchMore({
             variables: {
               last: 10,
@@ -72,8 +70,6 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
           <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
         <IconButton onClick={() => {
-          console.log(endCursor)
-          console.log(savedUserInput)
           fetchMore({
             variables: {
               first: 10,
