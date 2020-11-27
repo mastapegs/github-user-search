@@ -16,6 +16,9 @@ const mergeSearchQuery = (existingUsers = {}, incomingUsers, { args: { first, la
     edges,
   }
 
+  console.log('----- mergedUsers -----')
+  console.log(mergedUsers)
+
   return mergedUsers
   
 }
