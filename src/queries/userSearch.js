@@ -11,6 +11,7 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
       endCursor
     }
     edges {
+      cursor
       node {
         ... on User {
           name
