@@ -18,7 +18,22 @@ const httpLink = new HttpLink({
 
 const client = new ApolloClient({
   link: concat(authLink, httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          search: {
+            keyArgs: ['query'],
+            merge(existingUsers = {}, incomingUsers) {
+              console.log(existingUsers)
+              console.log(incomingUsers)
+              return incomingUsers
+            },
+          }
+        }
+      },
+    },
+  }),
 })
 
 const ApolloClientProvider = ({ children }) => {
