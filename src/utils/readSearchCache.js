@@ -1,7 +1,10 @@
-const read = (existingUsers, { args, args: { first, last, after, before } }) => {
+const read = (existingUsers, options) => {
+  const { args, args: { first, last, after, before } } = options
   console.log('----- entering READ -----')
   console.log('--- existingUsers ---')
   console.log(existingUsers)
+  console.log('----- options -----')
+  console.log(options)
   console.log('--- args ---')
   console.log(args)
   console.log('first')
