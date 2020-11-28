@@ -19,6 +19,7 @@ const UserInput = ({ getUsers, setSavedUserInput }) => {
 
   const { 
     first,
+    last,
     after,
     before,
    } = useContext(QueryVarContext)
