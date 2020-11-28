@@ -57,8 +57,8 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
       <Grid container justify='center' spacing={5}>
-        <IconButton onClick={() => {
-          fetchMore({
+        <IconButton onClick={async () => {
+          await fetchMore({
             variables: {
               last: 10,
               before: startCursor,
@@ -69,8 +69,8 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
         }} disabled={backButtonDisabled} color='primary'>
           <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
-        <IconButton onClick={() => {
-          fetchMore({
+        <IconButton onClick={async () => {
+          await fetchMore({
             variables: {
               first: 10,
               after: endCursor,
