@@ -1,12 +1,15 @@
 import React from 'react'
 import ApolloClientProvider from '../providers/ApolloClientProvider'
+import QueryVarProvider from '../providers/QueryVarProvider'
 
 const WrapRootElement = ({ element }) => {
   return (
     <>
-      <ApolloClientProvider>
-        {element}
-      </ApolloClientProvider>
+      <QueryVarProvider>
+        <ApolloClientProvider>
+          {element}
+        </ApolloClientProvider>
+      </QueryVarProvider>
     </>
   )
 }
