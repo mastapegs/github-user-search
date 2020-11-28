@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import {
   TextField,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import QueryVarContext from '../contexts/QueryVarContext'
+
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -15,6 +17,11 @@ const useStyles = makeStyles(theme => ({
 
 const UserInput = ({ getUsers, setSavedUserInput }) => {
 
+  const { 
+    first,
+    after,
+    before,
+   } = useContext(QueryVarContext)
   const [userInput, setUserInput] = useState('')
   const classes = useStyles()
   const inputRef = useRef(null)
@@ -32,7 +39,10 @@ const UserInput = ({ getUsers, setSavedUserInput }) => {
     setSavedUserInput(userInput)
     await getUsers({
       variables: {
-        first: 10,
+        first,
+        last,
+        after,
+        before,
         query: userInput,
         type: "USER"
       }
