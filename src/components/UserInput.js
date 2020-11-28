@@ -23,14 +23,14 @@ const UserInput = ({ getUsers, setSavedUserInput }) => {
     inputRef.current.querySelector("input").focus()
   }, [inputRef])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    handleSearch()
+    await handleSearch()
   }
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     setSavedUserInput(userInput)
-    getUsers({
+    await getUsers({
       variables: {
         first: 10,
         query: userInput,
@@ -47,7 +47,7 @@ const UserInput = ({ getUsers, setSavedUserInput }) => {
           label="Search GitHub Users"
           className={classes.textField}
           value={userInput}
-          onChange={e => setUserInput(e.target.value)}
+          onChange={async e => setUserInput(e.target.value)}
           ref={inputRef}
         />
       </form>
