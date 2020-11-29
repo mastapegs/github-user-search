@@ -78,9 +78,7 @@ const SingleUser = ({ user: {
               <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
             </Grid>
             <Grid className={classes.additionalData} container spacing={1}>
-              {additionalData
-                .filter(({ data }) => !!data)
-                .map(({ Icon, text, data }) => (
+              {additionalData.map(({ Icon, text, data }) => (
                   <Grid container alignItems="center" item xs={12} key={text}>
                     <Icon className={classes.icon} />
                     <p>{text}{typeof data === 'number' ? formatNumber(data) : data}</p>
