@@ -33,23 +33,25 @@ const SingleUser = ({ user: {
 
   const formattedWebsiteURL = (() => {
     if (!websiteUrl) return null
-    console.log(websiteUrl.substring(0, 4).toLowerCase())
     if (websiteUrl.substring(0, 4).toLowerCase() === 'http') return (
       <a
         href={websiteUrl}
         rel="noreferrer"
         target="_blank"
-      >{websiteUrl}</a>
+      >
+        {websiteUrl}
+      </a>
     )
     return (
       <a
         href={`http://${websiteUrl}`}
         rel="noreferrer"
         target="_blank"
-      >{websiteUrl}</a>
+      >
+        {websiteUrl}
+      </a>
     )
   })()
-  console.log(formattedWebsiteURL)
   const additionalData = [
     {
       Icon: AccountTreeOutlinedIcon,
