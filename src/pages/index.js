@@ -5,12 +5,12 @@ import UserSearch from '../components/UserSearch'
 import { USER_SEARCH } from '../queries'
 
 const Home = () => {
-  const [getUsers, { data: userDataFromQuery, loading: userDataIsLoading, fetchMore }] = useLazyQuery(USER_SEARCH)
+  const [getUsers, { data: userDataFromQuery, loading: userDataIsLoading }] = useLazyQuery(USER_SEARCH)
   const [savedUserInput, setSavedUserInput] = useState(null)
   return (
     <>
       <UserInput {...{ getUsers, setSavedUserInput }} />
-      <UserSearch {...{ userDataIsLoading, userDataFromQuery, fetchMore, savedUserInput }} />
+      <UserSearch {...{ userDataIsLoading, userDataFromQuery, getUsers, savedUserInput }} />
     </>
   )
 }

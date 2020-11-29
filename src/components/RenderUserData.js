@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 })
 
-const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
+const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
@@ -58,7 +58,7 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
       </Grid>
       <Grid container justify='center' spacing={5}>
         <IconButton onClick={async () => {
-          await fetchMore({
+          await getUsers({
             variables: {
               last: 10,
               before: startCursor,
@@ -69,12 +69,8 @@ const RenderUserData = ({ UserSearchData, fetchMore, savedUserInput }) => {
         }} disabled={backButtonDisabled} color='primary'>
           <NavigateBeforeIcon className={classes.navButtons} />
         </IconButton>
-        {/* 
-          What if I try to only have one variables object and modify it with
-          state before firing fetchMore?
-        */}
         <IconButton onClick={async () => {
-          await fetchMore({
+          await getUsers({
             variables: {
               first: 10,
               after: endCursor,
