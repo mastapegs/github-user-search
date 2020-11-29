@@ -11,7 +11,6 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
       endCursor
     }
     edges {
-      cursor
       node {
         ... on User {
           name
@@ -21,6 +20,7 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
           avatarUrl
           bioHTML
           location
+          company
           followers {
             totalCount
           }
