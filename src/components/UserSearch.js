@@ -4,11 +4,11 @@ import {
 } from '@material-ui/core'
 import RenderUserData from './RenderUserData'
 
-const UserSearch = ({ userDataIsLoading, userDataFromQuery, getUsers, savedUserInput }) => {
+const UserSearch = ({ userDataIsLoading, userDataFromQuery, getUsers, userInput }) => {
   return (
     <>
       {userDataIsLoading && <CircularProgress />}
-      <RenderUserData UserSearchData={userDataFromQuery} getUsers={getUsers} savedUserInput={savedUserInput} />
+      <RenderUserData UserSearchData={userDataFromQuery} getUsers={getUsers} userInput={userInput} />
     </>
   )
 }

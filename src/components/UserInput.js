@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   TextField,
 } from '@material-ui/core'
@@ -14,9 +14,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const UserInput = ({ getUsers, setSavedUserInput }) => {
+const UserInput = ({ getUsers, userInput, setUserInput }) => {
 
-  const [userInput, setUserInput] = useState('')
   const classes = useStyles()
   const inputRef = useRef(null)
 
@@ -30,7 +29,6 @@ const UserInput = ({ getUsers, setSavedUserInput }) => {
   }
 
   const handleSearch = async () => {
-    setSavedUserInput(userInput)
     await getUsers({
       variables: {
         first: 10,

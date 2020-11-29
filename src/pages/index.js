@@ -6,11 +6,11 @@ import { USER_SEARCH } from '../queries'
 
 const Home = () => {
   const [getUsers, { data: userDataFromQuery, loading: userDataIsLoading }] = useLazyQuery(USER_SEARCH)
-  const [savedUserInput, setSavedUserInput] = useState(null)
+  const [userInput, setUserInput] = useState('')
   return (
     <>
-      <UserInput {...{ getUsers, setSavedUserInput }} />
-      <UserSearch {...{ userDataIsLoading, userDataFromQuery, getUsers, savedUserInput }} />
+      <UserInput {...{ getUsers, userInput, setUserInput }} />
+      <UserSearch {...{ userDataIsLoading, userDataFromQuery, getUsers, userInput }} />
     </>
   )
 }

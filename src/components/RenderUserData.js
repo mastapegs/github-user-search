@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
+const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
@@ -71,7 +71,7 @@ const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
                 variables: {
                   last: 10,
                   before: startCursor,
-                  query: savedUserInput,
+                  query: userInput,
                   type: 'USER',
                 }
               })
@@ -86,7 +86,7 @@ const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
                 variables: {
                   first: 10,
                   after: endCursor,
-                  query: savedUserInput,
+                  query: userInput,
                   type: 'USER',
                 }
               })
