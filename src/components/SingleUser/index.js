@@ -8,6 +8,7 @@ import {
 import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
+import LocationOnIcon from '@material-ui/icons/LocationOn'
 import useStyles from './useStyles'
 import trimString from '../../utils/trimString'
 import formatNumber from '../../utils/formatNumber'
@@ -18,6 +19,7 @@ const SingleUser = ({ user: {
   url,
   avatarUrl,
   bioHTML,
+  location,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
   followers: { totalCount: followerCount },
@@ -25,6 +27,7 @@ const SingleUser = ({ user: {
 
   const classes = useStyles()
 
+  console.log(location)
   const additionalData = [
     {
       Icon: AccountTreeOutlinedIcon,
@@ -40,6 +43,11 @@ const SingleUser = ({ user: {
       Icon: PeopleAltOutlinedIcon,
       text: 'Followers: ',
       data: followerCount,
+    },
+    {
+      Icon: LocationOnIcon,
+      text: 'Location: ',
+      data: location,
     },
   ]
 
@@ -70,12 +78,14 @@ const SingleUser = ({ user: {
               <p className={classes.bioHTML} dangerouslySetInnerHTML={{ __html: bioHTML }}></p>
             </Grid>
             <Grid className={classes.additionalData} container spacing={1}>
-              {additionalData.map(({ Icon, text, data }) => (
-                <Grid container alignItems="center" item xs={12} key={text}>
-                  <Icon className={classes.icon} />
-                  <p>{text}{formatNumber(data)}</p>
-                </Grid>
-              ))}
+              {additionalData
+                .filter(({ data }) => !!data)
+                .map(({ Icon, text, data }) => (
+                  <Grid container alignItems="center" item xs={12} key={text}>
+                    <Icon className={classes.icon} />
+                    <p>{text}{typeof data === 'number' ? formatNumber(data) : data}</p>
+                  </Grid>
+                ))}
             </Grid>
           </CardContent>
         </Card>

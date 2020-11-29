@@ -20,6 +20,7 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
           url
           avatarUrl
           bioHTML
+          location
           followers {
             totalCount
           }
@@ -27,9 +28,6 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
             totalCount
           }
           starredRepositories {
-            totalCount
-          }
-          followers {
             totalCount
           }
         }
