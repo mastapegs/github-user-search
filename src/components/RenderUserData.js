@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '2em',
   },
   usersGrid: {
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(12),
   },
   fabGrid: {
     position: 'fixed',
