@@ -53,7 +53,8 @@ const FabNav = ({ UserSearchData, getUsers, userInput, userDataIsLoading }) => {
     endCursor = ''
   }
 
-  return createPortal(
+  if (typeof window === 'undefined') return <></>
+  else return createPortal(
     <Grid className={classes.fabGrid} container justify='center' spacing={5}>
       <Grid item>
         <Fab disabled={backButtonDisabled} color="primary" aria-label="previous-page"
