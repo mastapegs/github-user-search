@@ -72,7 +72,7 @@ const FabNav = ({ UserSearchData, getUsers, userInput, userDataIsLoading }) => {
         </Fab>
       </Grid>
       <Grid item>
-        <Fab disabled={forwardButtonDisabled} color="primary" aria-label="previous-page"
+        <Fab disabled={forwardButtonDisabled} color="primary" aria-label="next-page"
           onClick={async () => {
             await getUsers({
               variables: {
