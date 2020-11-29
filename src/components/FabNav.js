@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import {
   Grid,
   Fab,
@@ -39,7 +40,7 @@ const FabNav = ({ UserSearchData, getUsers, userInput, startCursor, endCursor })
     }
   }, [UserSearchData])
 
-  return (
+  return createPortal(
     <Grid className={classes.fabGrid} container justify='center' spacing={5}>
       <Grid item>
         <Fab disabled={backButtonDisabled} color="primary" aria-label="previous-page"
@@ -71,7 +72,8 @@ const FabNav = ({ UserSearchData, getUsers, userInput, startCursor, endCursor })
           <NavigateNextIcon className={classes.navButtons} />
         </Fab>
       </Grid>
-    </Grid>
+    </Grid>,
+    document.getElementById('fab')
   )
 }
 
