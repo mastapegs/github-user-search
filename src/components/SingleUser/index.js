@@ -23,7 +23,7 @@ const SingleUser = ({ user: {
   bioHTML,
   location,
   company,
-  websiteUrl,
+  websiteUrl = null,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
   followers: { totalCount: followerCount },
@@ -31,7 +31,25 @@ const SingleUser = ({ user: {
 
   const classes = useStyles()
 
-  console.log(location)
+  const formattedWebsiteURL = (() => {
+    if (!websiteUrl) return null
+    console.log(websiteUrl.substring(0, 4).toLowerCase())
+    if (websiteUrl.substring(0, 4).toLowerCase() === 'http') return (
+      <a
+        href={websiteUrl}
+        rel="noreferrer"
+        target="_blank"
+      >{websiteUrl}</a>
+    )
+    return (
+      <a
+        href={`http://${websiteUrl}`}
+        rel="noreferrer"
+        target="_blank"
+      >{websiteUrl}</a>
+    )
+  })()
+  console.log(formattedWebsiteURL)
   const additionalData = [
     {
       Icon: AccountTreeOutlinedIcon,
@@ -61,11 +79,7 @@ const SingleUser = ({ user: {
     {
       Icon: LanguageIcon,
       text: 'Website: ',
-      data: <a
-        href={websiteUrl}
-        rel="noreferrer"
-        target="_blank"
-      >{websiteUrl}</a>,
+      data: formattedWebsiteURL,
     },
   ]
 
