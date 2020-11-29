@@ -32,25 +32,26 @@ const SingleUser = ({ user: {
   const classes = useStyles()
 
   const formattedWebsiteURL = (() => {
+
     if (!websiteUrl) return null
-    if (websiteUrl.substring(0, 4).toLowerCase() === 'http') return (
-      <a
-        href={websiteUrl}
+
+    const createWebsiteAnchor = (websiteUrl) => {
+      let href
+      if (websiteUrl.substring(0, 4).toLowerCase() === 'http') href = websiteUrl
+      else href = `http://${websiteUrl}`
+      return (
+        <a
+        href={href}
         rel="noreferrer"
         target="_blank"
       >
         {websiteUrl}
       </a>
-    )
-    return (
-      <a
-        href={`http://${websiteUrl}`}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {websiteUrl}
-      </a>
-    )
+      )
+    }
+    
+    return createWebsiteAnchor(websiteUrl)
+    
   })()
   const additionalData = [
     {
