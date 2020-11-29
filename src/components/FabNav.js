@@ -19,11 +19,20 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const FabNav = ({ UserSearchData, getUsers, userInput, startCursor, endCursor }) => {
+const FabNav = ({ UserSearchData, getUsers, userInput }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
   const [forwardButtonDisabled, setForwardButtonDisabled] = useState(true)
+
+  const {
+    search: {
+      pageInfo: {
+        startCursor,
+        endCursor,
+      },
+    }
+  } = UserSearchData
 
   useEffect(() => {
     if (UserSearchData) {

@@ -2,8 +2,8 @@ import React from 'react'
 import {
   Grid,
 } from '@material-ui/core'
-import SingleUser from './SingleUser'
 import { makeStyles } from '@material-ui/core/styles'
+import SingleUser from './SingleUser'
 import FabNav from './FabNav'
 import formatNumber from '../utils/formatNumber'
 
@@ -23,10 +23,6 @@ const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
     search: {
       userCount,
       edges,
-      pageInfo: {
-        startCursor,
-        endCursor,
-      },
     }
   } = UserSearchData
 
@@ -38,7 +34,7 @@ const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
           .filter(({ node: { login } }) => !!login)
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
-      <FabNav {...{ UserSearchData, getUsers, userInput, startCursor, endCursor }} />
+      <FabNav {...{ UserSearchData, getUsers, userInput }} />
     </>
   )
 }
