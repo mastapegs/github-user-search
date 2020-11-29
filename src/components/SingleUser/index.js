@@ -9,6 +9,7 @@ import StarBorderRoundedIcon from '@material-ui/icons/StarBorderRounded'
 import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 import BusinessIcon from '@material-ui/icons/Business'
+import LanguageIcon from '@material-ui/icons/Language'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import useStyles from './useStyles'
 import trimString from '../../utils/trimString'
@@ -22,6 +23,7 @@ const SingleUser = ({ user: {
   bioHTML,
   location,
   company,
+  websiteUrl,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
   followers: { totalCount: followerCount },
@@ -55,6 +57,15 @@ const SingleUser = ({ user: {
       Icon: BusinessIcon,
       text: 'Company: ',
       data: company,
+    },
+    {
+      Icon: LanguageIcon,
+      text: 'Website: ',
+      data: <a
+        href={websiteUrl}
+        rel="noreferrer"
+        target="_blank"
+      >{websiteUrl}</a>,
     },
   ]
 

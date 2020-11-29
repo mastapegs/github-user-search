@@ -21,6 +21,7 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
           bioHTML
           location
           company
+          websiteUrl
           followers {
             totalCount
           }
