@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   navButtons: {
-    fontSize: '3em',
+    fontSize: '2em',
   },
   usersGrid: {
     marginBottom: theme.spacing(6),
