@@ -19,23 +19,17 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const FabNav = ({ UserSearchData, getUsers, userInput }) => {
+const FabNav = ({ UserSearchData, getUsers, userInput, userDataIsLoading }) => {
 
   const classes = useStyles()
   const [backButtonDisabled, setBackButtonDisabled] = useState(true)
   const [forwardButtonDisabled, setForwardButtonDisabled] = useState(true)
 
-  const {
-    search: {
-      pageInfo: {
-        startCursor,
-        endCursor,
-      },
-    }
-  } = UserSearchData
-
   useEffect(() => {
-    if (UserSearchData) {
+    if (userDataIsLoading || !UserSearchData) {
+      setBackButtonDisabled(true)
+      setForwardButtonDisabled(true)
+    } else if (UserSearchData) {
       const {
         search: {
           pageInfo: {
@@ -47,7 +41,17 @@ const FabNav = ({ UserSearchData, getUsers, userInput }) => {
       setBackButtonDisabled(!hasPreviousPage)
       setForwardButtonDisabled(!hasNextPage)
     }
-  }, [UserSearchData])
+  }, [UserSearchData, userDataIsLoading])
+
+  let startCursor
+  let endCursor
+  if (UserSearchData) {
+    startCursor = UserSearchData.search.pageInfo.startCursor
+    endCursor = UserSearchData.search.pageInfo.endCursor
+  } else {
+    startCursor = ''
+    endCursor = ''
+  }
 
   return createPortal(
     <Grid className={classes.fabGrid} container justify='center' spacing={5}>

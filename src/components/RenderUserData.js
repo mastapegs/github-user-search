@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import SingleUser from './SingleUser'
-import FabNav from './FabNav'
 import formatNumber from '../utils/formatNumber'
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
+const RenderUserData = ({ UserSearchData }) => {
 
   const classes = useStyles()
 
@@ -34,7 +33,6 @@ const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
           .filter(({ node: { login } }) => !!login)
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
-      <FabNav {...{ UserSearchData, getUsers, userInput }} />
     </>
   )
 }
