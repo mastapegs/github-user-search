@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
   fabGrid: {
     position: 'fixed',
     bottom: theme.spacing(4),
+    width: '100%',
   }
 }))
 
