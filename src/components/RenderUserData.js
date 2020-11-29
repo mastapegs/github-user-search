@@ -7,6 +7,7 @@ import SingleUser from './SingleUser'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import { makeStyles } from '@material-ui/core/styles'
+import formatNumber from '../utils/formatNumber'
 
 const useStyles = makeStyles(theme => ({
   navButtons: {
@@ -58,7 +59,7 @@ const RenderUserData = ({ UserSearchData, getUsers, userInput }) => {
 
   return (
     <>
-      <h2>Users Found: {parseFloat(userCount).toLocaleString('en')}</h2>
+      <h2>Users Found: {formatNumber(userCount)}</h2>
       <Grid className={classes.usersGrid} container spacing={2}>
         {edges
           .filter(({ node: { login } }) => !!login)
