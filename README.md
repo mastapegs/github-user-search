@@ -1,3 +1,3 @@
 # GitHub User Search Code Challenge
 
-This web app recreates the [GitHub User Search](https://github.com/search).
+This web app reimplements a portion of the [GitHub Search](https://github.com/search) functionality, the user search.
