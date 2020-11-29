@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import {
   Grid,
-  IconButton,
+  Fab,
 } from '@material-ui/core'
 import SingleUser from './SingleUser'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   navButtons: {
     fontSize: '3em',
   },
-})
+  usersGrid: {
+    marginBottom: theme.spacing(6),
+  },
+  fabGrid: {
+    position: 'fixed',
+    bottom: theme.spacing(4),
+  }
+}))
 
 const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
 
@@ -51,36 +58,42 @@ const RenderUserData = ({ UserSearchData, getUsers, savedUserInput }) => {
   return (
     <>
       <h2>Users Found: {parseFloat(userCount).toLocaleString('en')}</h2>
-      <Grid container spacing={2}>
+      <Grid className={classes.usersGrid} container spacing={2}>
         {edges
           .filter(({ node: { login } }) => !!login)
           .map(({ node: user, node: { login } }) => <SingleUser user={user} key={login} />)}
       </Grid>
-      <Grid container justify='center' spacing={5}>
-        <IconButton onClick={async () => {
-          await getUsers({
-            variables: {
-              last: 10,
-              before: startCursor,
-              query: savedUserInput,
-              type: 'USER',
-            }
-          })
-        }} disabled={backButtonDisabled} color='primary'>
-          <NavigateBeforeIcon className={classes.navButtons} />
-        </IconButton>
-        <IconButton onClick={async () => {
-          await getUsers({
-            variables: {
-              first: 10,
-              after: endCursor,
-              query: savedUserInput,
-              type: 'USER',
-            }
-          })
-        }} disabled={forwardButtonDisabled} color='primary'>
-          <NavigateNextIcon className={classes.navButtons} />
-        </IconButton>
+      <Grid className={classes.fabGrid} container justify='center' spacing={5}>
+        <Grid item>
+          <Fab disabled={backButtonDisabled} color="primary" aria-label="previous-page"
+            onClick={async () => {
+              await getUsers({
+                variables: {
+                  last: 10,
+                  before: startCursor,
+                  query: savedUserInput,
+                  type: 'USER',
+                }
+              })
+            }}>
+            <NavigateBeforeIcon className={classes.navButtons} />
+          </Fab>
+        </Grid>
+        <Grid item>
+          <Fab disabled={forwardButtonDisabled} color="primary" aria-label="previous-page"
+            onClick={async () => {
+              await getUsers({
+                variables: {
+                  first: 10,
+                  after: endCursor,
+                  query: savedUserInput,
+                  type: 'USER',
+                }
+              })
+            }}>
+            <NavigateNextIcon className={classes.navButtons} />
+          </Fab>
+        </Grid>
       </Grid>
     </>
   )
