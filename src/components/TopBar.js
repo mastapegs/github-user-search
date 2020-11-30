@@ -23,7 +23,13 @@ const TopBar = () => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton className={classes.icon} edge="start" color="inherit">
+          <IconButton
+            rel="noreferrer"
+            target="_blank"
+            href="https://github.com/mastapegs/github-user-search"
+            className={classes.icon}
+            edge="start" color="inherit"
+          >
             <GitHubIcon />
           </IconButton>
           <Typography component='h1' variant="h6">GitHub User Search</Typography>
