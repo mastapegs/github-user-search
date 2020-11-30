@@ -34,9 +34,7 @@ const SingleUser = ({ user: {
   const classes = useStyles()
 
   const formattedWebsiteURL = (() => {
-
     if (!websiteUrl) return null
-
     const createWebsiteAnchor = (websiteUrl) => {
       let href
       if (websiteUrl.substring(0, 4).toLowerCase() === 'http') href = websiteUrl
@@ -51,13 +49,14 @@ const SingleUser = ({ user: {
         </a>
       )
     }
-
     return createWebsiteAnchor(websiteUrl)
-
   })()
 
-  console.log(`${email}`)
-  console.log(!!email)
+  const createEmailAnchor = email => {
+    if (typeof email === 'string' && email.trim() === '') return ''
+    return <a href={`mailto:${email}`}>{email}</a>
+  }
+
   const additionalData = [
     {
       Icon: AccountTreeOutlinedIcon,
@@ -77,7 +76,7 @@ const SingleUser = ({ user: {
     {
       Icon: EmailIcon,
       text: 'Email: ',
-      data: email,
+      data: createEmailAnchor(email),
     },
     {
       Icon: LocationOnIcon,
@@ -126,7 +125,7 @@ const SingleUser = ({ user: {
               {additionalData
                 .filter(({ data }) => {
                   if (typeof data === 'string') {
-                    return !!data 
+                    return !!(data.trim())
                   }
                   return data !== null
                 })
