@@ -7,9 +7,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby build && http-server ./public",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
@@ -26,6 +25,7 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "http-server": "^0.12.3",
     "prettier": "2.1.2"
   },
   "repository": {
