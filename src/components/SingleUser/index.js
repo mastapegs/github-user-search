@@ -12,6 +12,7 @@ import BusinessIcon from '@material-ui/icons/Business'
 import LanguageIcon from '@material-ui/icons/Language'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import EmailIcon from '@material-ui/icons/Email'
+import TwitterIcon from '@material-ui/icons/Twitter'
 import useStyles from './useStyles'
 import trimString from '../../utils/trimString'
 import formatNumber from '../../utils/formatNumber'
@@ -25,6 +26,7 @@ const SingleUser = ({ user: {
   location,
   company,
   email = null,
+  twitterUsername,
   websiteUrl = null,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
@@ -52,6 +54,12 @@ const SingleUser = ({ user: {
     return createWebsiteAnchor(websiteUrl)
   })()
 
+  const createTwitterAnchor = twitter => {
+    if (typeof twitter === 'string' && twitter.trim() === '') return ''
+    if (!twitter) return ''
+    return <a rel="noreferrer" target="_blank" href={`http://twitter.com/${twitter}`}>{twitter}</a>
+  }
+  
   const createEmailAnchor = email => {
     if (typeof email === 'string' && email.trim() === '') return ''
     return <a href={`mailto:${email}`}>{email}</a>
@@ -77,6 +85,11 @@ const SingleUser = ({ user: {
       Icon: EmailIcon,
       text: 'Email: ',
       data: createEmailAnchor(email),
+    },
+    {
+      Icon: TwitterIcon,
+      text: 'Twitter: ',
+      data: createTwitterAnchor(twitterUsername),
     },
     {
       Icon: LocationOnIcon,
