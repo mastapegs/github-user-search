@@ -11,6 +11,7 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined'
 import BusinessIcon from '@material-ui/icons/Business'
 import LanguageIcon from '@material-ui/icons/Language'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
+import EmailIcon from '@material-ui/icons/Email'
 import useStyles from './useStyles'
 import trimString from '../../utils/trimString'
 import formatNumber from '../../utils/formatNumber'
@@ -23,6 +24,7 @@ const SingleUser = ({ user: {
   bioHTML,
   location,
   company,
+  email = null,
   websiteUrl = null,
   repositories: { totalCount: repoCount },
   starredRepositories: { totalCount: starCount },
@@ -41,18 +43,21 @@ const SingleUser = ({ user: {
       else href = `http://${websiteUrl}`
       return (
         <a
-        href={href}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {websiteUrl}
-      </a>
+          href={href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {websiteUrl}
+        </a>
       )
     }
-    
+
     return createWebsiteAnchor(websiteUrl)
-    
+
   })()
+
+  console.log(`${email}`)
+  console.log(!!email)
   const additionalData = [
     {
       Icon: AccountTreeOutlinedIcon,
@@ -68,6 +73,11 @@ const SingleUser = ({ user: {
       Icon: PeopleAltOutlinedIcon,
       text: 'Followers: ',
       data: followerCount,
+    },
+    {
+      Icon: EmailIcon,
+      text: 'Email: ',
+      data: email,
     },
     {
       Icon: LocationOnIcon,
@@ -114,7 +124,12 @@ const SingleUser = ({ user: {
             </Grid>
             <Grid className={classes.additionalData} container spacing={1}>
               {additionalData
-                .filter(({ data }) => data !== null)
+                .filter(({ data }) => {
+                  if (typeof data === 'string') {
+                    return !!data 
+                  }
+                  return data !== null
+                })
                 .map(({ Icon, text, data }) => (
                   <Grid container alignItems="center" item xs={12} key={text}>
                     <Icon className={classes.icon} />

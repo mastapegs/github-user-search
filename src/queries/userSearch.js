@@ -22,6 +22,7 @@ query UserSearch($first: Int, $after: String, $last: Int, $before: String, $quer
           location
           company
           websiteUrl
+          email
           followers {
             totalCount
           }
